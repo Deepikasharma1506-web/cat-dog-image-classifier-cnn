@@ -9,6 +9,8 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 model = tf.keras.models.load_model("cat_dog_model.keras")
 
 @app.route("/")
