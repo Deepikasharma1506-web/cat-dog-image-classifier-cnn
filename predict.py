@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-model = tf.keras.models.load_model("cat_dog_model.h5")
+model = tf.keras.models.load_model("cat_dog_model.keras")
 
 img_path = "dog.jpg"     # image name
 

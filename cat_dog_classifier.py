@@ -26,11 +26,20 @@ val_data = datagen.flow_from_directory(
 )
 
 model = tf.keras.Sequential([
+
     tf.keras.layers.Conv2D(
-        32,
+        16,
         (3,3),
         activation='relu',
         input_shape=(150,150,3)
+    ),
+
+    tf.keras.layers.MaxPooling2D(),
+
+    tf.keras.layers.Conv2D(
+        32,
+        (3,3),
+        activation='relu'
     ),
 
     tf.keras.layers.MaxPooling2D(),
@@ -43,10 +52,10 @@ model = tf.keras.Sequential([
 
     tf.keras.layers.MaxPooling2D(),
 
-    tf.keras.layers.Flatten(),
+    tf.keras.layers.GlobalAveragePooling2D(),
 
     tf.keras.layers.Dense(
-        128,
+        64,
         activation='relu'
     ),
 
@@ -54,6 +63,7 @@ model = tf.keras.Sequential([
         1,
         activation='sigmoid'
     )
+
 ])
 
 model.compile(
@@ -67,9 +77,9 @@ model.summary()
 model.fit(
     train_data,
     validation_data=val_data,
-    epochs=10
+    epochs=5
 )
 
-model.save("cat_dog_model.h5")
+model.save("cat_dog_model.keras")
 
 print("Model Saved Successfully")

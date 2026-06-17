@@ -9,7 +9,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-model = tf.keras.models.load_model("cat_dog_model.h5")
+model = tf.keras.models.load_model("cat_dog_model.keras")
 
 @app.route("/")
 def home():
